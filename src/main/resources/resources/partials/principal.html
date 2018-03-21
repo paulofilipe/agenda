@@ -1,0 +1,43 @@
+<div class="jumbotrom">
+	<h1 class="text-center">Agenda de Contatos</h1>
+	<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<form>
+			<div class="input-group">
+				<span class="input-group-btn"> 
+					<a href="/#/contatos/add" class="btn btn-primary">Novo contato</a>
+				</span> 
+				<input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="filtrar"> 
+			</div>
+		</form>
+	</div>
+</div>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Telefone</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="c in contatos | filter: filtro">
+			<th scope="row">{{c.id}}</th>
+			<td>{{c.nome}}</td>
+			<td>{{c.email}}</td>
+			<td>{{c.telefone}}</td>
+			<td>
+				<span class="float-right">
+					<a class="btn btn-warning btn-sm" href="/#/contatos/edit/{{c.id}}" >Editar</a>
+					<button class="btn btn-danger btn-sm" ng-click="remover(c)">Deletar</button>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>

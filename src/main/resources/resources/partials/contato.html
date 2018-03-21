@@ -1,0 +1,66 @@
+<div class="page-header text-content">
+	<h1> <span ng-show="contato.id > 0">Editar</span>
+		 <span ng-show="contato.id == undefined || contato.id <= 0">Adicionar</span> contato </h1>
+	<h3>{{contato.nome}}</h3>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}} </p>
+
+<form novalidate name="formulario" class="row" ng-submit="save()">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label>Nome</label>
+			<input ng-model="contato.nome" name="nome" class="form-control" required>
+			<span ng-show="formulario.$submitted && formulario.nome.$error.required" class="form-control alert-danger">
+				Nome Obrigatorio
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Telefone</label>
+			<input name="telefone" ng-model="contato.telefone" ng-minlength="10" ng-maxlength="11" type="number" class="form-control" required>
+			<span ng-show="formulario.$submitted && formulario.telefone.$error.required" class="form-control alert-danger">
+				Telefone obrigatorio
+			</span>
+		</div>
+		<div class="form-group">
+			<label>E-Mail</label>
+			<input ng-model="contato.email" type="email" name="descricao" class="form-control"/>
+		</div>
+		<button ng-disabled="formulario.$invalid" type="submit" class="btn btn-primary">
+			salvar
+		</button>
+
+		<a href="/" class="btn btn-primary">Voltar</a>
+		<hr>
+	</div>
+</form>
+
+<!-- <div class="jumbotrom">
+	<h1 class="text-center">Cadastro de Contatos</h1>
+</div>
+
+<form class="form" ng-submit="save()">
+
+	<div class="form-group">
+		<label for="name-input">Nome:</label> 
+		<input id="name-input" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="email-input">Email:</label> 
+		<input id="email-input" type="email" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="phone-input">Telefone:</label> 
+		<input id="phone-input" type="tel" class="form-control">
+	</div>
+
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-success float-right">
+			Salvar
+		</button>
+	</div>
+
+</form> -->
